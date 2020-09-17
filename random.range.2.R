@@ -58,10 +58,10 @@ random.range.2 <- function(rrange, nb, rbase){
   uid <- c(1:length(nb))
   orig <- uid*0
   orig[[which(na.omit(values(rcent))==1)]] <- 1
-
+  
   sel.vec <- sample(uid, 1, prob = orig)
   sel.nb <- unlist(nb[sel.vec])
-
+  
   for (i in 2:range.size){
     sel.vec[i] <- sample(sel.nb, 1)
     sel.nb <- unique(c(sel.nb, unlist(nb[sel.vec[i]])))

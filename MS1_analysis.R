@@ -49,14 +49,14 @@ m3a3 <- glm(formula=(Rand.RP)~R.shape, data=df, family = 'gaussian')
 m3a4 <- glm(formula=(Rand.RP)~P.shape, data=df, family = 'gaussian')
 m3a5 <- glm(formula=(Rand.RP)~R.lat, data=df, family = 'gaussian')
 m3a6 <- glm(formula=(Rand.RP)~R.lon, data=df, family = 'gaussian')
-  
+
 
 Sq.df <- data.frame(R.km2=c(RsquareAdj(m1a1)[[2]], NA, RsquareAdj(m3a1)[[2]]),
-                     P.km2=c(RsquareAdj(m1a2)[[2]], RsquareAdj(m2a2)[[2]], RsquareAdj(m3a2)[[2]]), 
-                     R.shape=c(RsquareAdj(m1a3)[[2]], RsquareAdj(m2a3)[[2]], RsquareAdj(m3a3)[[2]]),
-                     P.shape=c(RsquareAdj(m1a4)[[2]], RsquareAdj(m2a4)[[2]], RsquareAdj(m3a4)[[2]]),
-                     Lat=c(RsquareAdj(m1a5)[[2]], RsquareAdj(m2a5)[[2]], RsquareAdj(m3a5)[[2]]),
-                     Long=c(RsquareAdj(m1a6)[[2]], RsquareAdj(m2a6)[[2]], RsquareAdj(m3a6)[[2]]))
+                    P.km2=c(RsquareAdj(m1a2)[[2]], RsquareAdj(m2a2)[[2]], RsquareAdj(m3a2)[[2]]), 
+                    R.shape=c(RsquareAdj(m1a3)[[2]], RsquareAdj(m2a3)[[2]], RsquareAdj(m3a3)[[2]]),
+                    P.shape=c(RsquareAdj(m1a4)[[2]], RsquareAdj(m2a4)[[2]], RsquareAdj(m3a4)[[2]]),
+                    Lat=c(RsquareAdj(m1a5)[[2]], RsquareAdj(m2a5)[[2]], RsquareAdj(m3a5)[[2]]),
+                    Long=c(RsquareAdj(m1a6)[[2]], RsquareAdj(m2a6)[[2]], RsquareAdj(m3a6)[[2]]))
 row.names(Sq.df) <- c('Range Filling', 'Residuals', 'Randomized')
 
 
@@ -82,49 +82,49 @@ row.names(Sq.df) <- c('Range Filling', 'Residuals', 'Randomized')
 #                       Long=c(m1a6$coefficients[2], m2a6$coefficients[2], m3a6$coefficients[2]))
 
 realized.table <- data.frame(Coefficient=c(summary(m1a1)$coef[2,1], summary(m1a2)$coef[2,1],
-                                  summary(m1a3)$coef[2,1], summary(m1a4)$coef[2,1],
-                                  summary(m1a5)$coef[2,1], summary(m1a6)$coef[2,1]),
-                          Std.Error=c(summary(m1a1)$coef[2,2], summary(m1a2)$coef[2,2],
-                                  summary(m1a3)$coef[2,2], summary(m1a4)$coef[2,2],
-                                  summary(m1a5)$coef[2,2], summary(m1a6)$coef[2,2]),
-                          P.Value =c(summary(m1a1)$coef[2,4], summary(m1a2)$coef[2,4],
-                                  summary(m1a3)$coef[2,4], summary(m1a4)$coef[2,4],
-                                  summary(m1a5)$coef[2,4], summary(m1a6)$coef[2,4]),
-                          AIC     =c(summary(m1a1)$aic, summary(m1a2)$aic, summary(m1a3)$aic,
-                                  summary(m1a4)$aic, summary(m1a5)$aic, summary(m1a6)$aic),
-                          Adj.Rsq =c(RsquareAdj(m1a1)[[2]], RsquareAdj(m1a2)[[2]], RsquareAdj(m1a3)[[2]],
-                                  RsquareAdj(m1a4)[[2]], RsquareAdj(m1a5)[[2]], RsquareAdj(m1a6)[[2]]))
+                                           summary(m1a3)$coef[2,1], summary(m1a4)$coef[2,1],
+                                           summary(m1a5)$coef[2,1], summary(m1a6)$coef[2,1]),
+                             Std.Error=c(summary(m1a1)$coef[2,2], summary(m1a2)$coef[2,2],
+                                         summary(m1a3)$coef[2,2], summary(m1a4)$coef[2,2],
+                                         summary(m1a5)$coef[2,2], summary(m1a6)$coef[2,2]),
+                             P.Value =c(summary(m1a1)$coef[2,4], summary(m1a2)$coef[2,4],
+                                        summary(m1a3)$coef[2,4], summary(m1a4)$coef[2,4],
+                                        summary(m1a5)$coef[2,4], summary(m1a6)$coef[2,4]),
+                             AIC     =c(summary(m1a1)$aic, summary(m1a2)$aic, summary(m1a3)$aic,
+                                        summary(m1a4)$aic, summary(m1a5)$aic, summary(m1a6)$aic),
+                             Adj.Rsq =c(RsquareAdj(m1a1)[[2]], RsquareAdj(m1a2)[[2]], RsquareAdj(m1a3)[[2]],
+                                        RsquareAdj(m1a4)[[2]], RsquareAdj(m1a5)[[2]], RsquareAdj(m1a6)[[2]]))
 randomed.table <- data.frame(Coefficient=c(summary(m3a1)$coef[2,1], summary(m3a2)$coef[2,1],
-                                  summary(m3a3)$coef[2,1], summary(m3a4)$coef[2,1],
-                                  summary(m3a5)$coef[2,1], summary(m3a6)$coef[2,1]),
-                          Std.Error=c(summary(m3a1)$coef[2,2], summary(m3a2)$coef[2,2],
-                                  summary(m3a3)$coef[2,2], summary(m3a4)$coef[2,2],
-                                  summary(m3a5)$coef[2,2], summary(m3a6)$coef[2,2]),
-                          P.Value =c(summary(m3a1)$coef[2,4], summary(m3a2)$coef[2,4],
-                                  summary(m3a3)$coef[2,4], summary(m3a4)$coef[2,4],
-                                  summary(m3a5)$coef[2,4], summary(m3a6)$coef[2,4]),
-                          AIC     =c(summary(m3a1)$aic, summary(m3a2)$aic, summary(m3a3)$aic,
-                                  summary(m3a4)$aic, summary(m3a5)$aic, summary(m3a6)$aic),
-                          Adj.Rsq =c(RsquareAdj(m3a1)[[2]], RsquareAdj(m3a2)[[2]], RsquareAdj(m3a3)[[2]],
-                                  RsquareAdj(m3a4)[[2]], RsquareAdj(m3a5)[[2]], RsquareAdj(m3a6)[[2]]))
+                                           summary(m3a3)$coef[2,1], summary(m3a4)$coef[2,1],
+                                           summary(m3a5)$coef[2,1], summary(m3a6)$coef[2,1]),
+                             Std.Error=c(summary(m3a1)$coef[2,2], summary(m3a2)$coef[2,2],
+                                         summary(m3a3)$coef[2,2], summary(m3a4)$coef[2,2],
+                                         summary(m3a5)$coef[2,2], summary(m3a6)$coef[2,2]),
+                             P.Value =c(summary(m3a1)$coef[2,4], summary(m3a2)$coef[2,4],
+                                        summary(m3a3)$coef[2,4], summary(m3a4)$coef[2,4],
+                                        summary(m3a5)$coef[2,4], summary(m3a6)$coef[2,4]),
+                             AIC     =c(summary(m3a1)$aic, summary(m3a2)$aic, summary(m3a3)$aic,
+                                        summary(m3a4)$aic, summary(m3a5)$aic, summary(m3a6)$aic),
+                             Adj.Rsq =c(RsquareAdj(m3a1)[[2]], RsquareAdj(m3a2)[[2]], RsquareAdj(m3a3)[[2]],
+                                        RsquareAdj(m3a4)[[2]], RsquareAdj(m3a5)[[2]], RsquareAdj(m3a6)[[2]]))
 residual.table <- data.frame(Coefficient=c(0, summary(m2a2)$coef[2,1],
-                                  summary(m2a3)$coef[2,1], summary(m2a4)$coef[2,1],
-                                  summary(m2a5)$coef[2,1], summary(m2a6)$coef[2,1]),
-                          Std.Error=c(0, summary(m2a2)$coef[2,2],
-                                  summary(m2a3)$coef[2,2], summary(m2a4)$coef[2,2],
-                                  summary(m2a5)$coef[2,2], summary(m2a6)$coef[2,2]),
-                          P.Value =c(0, summary(m2a2)$coef[2,4],
-                                  summary(m2a3)$coef[2,4], summary(m2a4)$coef[2,4],
-                                  summary(m2a5)$coef[2,4], summary(m2a6)$coef[2,4]),
-                          AIC     =c(0, AIC(m2a2), AIC(m2a3), AIC(m2a4), AIC(m2a5), AIC(m2a6)),
-                          Adj.Rsq =c(0, RsquareAdj(m2a2)[[2]], RsquareAdj(m2a3)[[2]],
-                                  RsquareAdj(m2a4)[[2]], RsquareAdj(m2a5)[[2]], RsquareAdj(m2a6)[[2]]))
+                                           summary(m2a3)$coef[2,1], summary(m2a4)$coef[2,1],
+                                           summary(m2a5)$coef[2,1], summary(m2a6)$coef[2,1]),
+                             Std.Error=c(0, summary(m2a2)$coef[2,2],
+                                         summary(m2a3)$coef[2,2], summary(m2a4)$coef[2,2],
+                                         summary(m2a5)$coef[2,2], summary(m2a6)$coef[2,2]),
+                             P.Value =c(0, summary(m2a2)$coef[2,4],
+                                        summary(m2a3)$coef[2,4], summary(m2a4)$coef[2,4],
+                                        summary(m2a5)$coef[2,4], summary(m2a6)$coef[2,4]),
+                             AIC     =c(0, AIC(m2a2), AIC(m2a3), AIC(m2a4), AIC(m2a5), AIC(m2a6)),
+                             Adj.Rsq =c(0, RsquareAdj(m2a2)[[2]], RsquareAdj(m2a3)[[2]],
+                                        RsquareAdj(m2a4)[[2]], RsquareAdj(m2a5)[[2]], RsquareAdj(m2a6)[[2]]))
 row.names(realized.table) <- c('Range Size ', 'Potential Range Size', 'Shape Ratio',
-                            'Potential Shape Ratio', 'Latitude', 'Longitude')
+                               'Potential Shape Ratio', 'Latitude', 'Longitude')
 row.names(randomed.table) <- c('Range Size ', 'Potential Range Size', 'Shape Ratio',
-                            'Potential Shape Ratio', 'Latitude', 'Longitude')
+                               'Potential Shape Ratio', 'Latitude', 'Longitude')
 row.names(residual.table) <- c('Range Size ', 'Potential Range Size', 'Shape Ratio',
-                            'Potential Shape Ratio', 'Latitude', 'Longitude')
+                               'Potential Shape Ratio', 'Latitude', 'Longitude')
 
 write.csv(t(Sq.df), 'Output\\results.table.csv')
 write.csv(signif(realized.table, 3), 'Output\\realized.table.csv')
